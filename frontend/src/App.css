@@ -7,6 +7,15 @@
   pointer-events: none;
 }
 
+.recent-post-title {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.recent-post-title:hover {
+  text-decoration: underline;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

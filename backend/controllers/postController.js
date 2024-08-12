@@ -2,36 +2,39 @@ const Post = require('../models/postModel')
 
 const createPost = async (req, res) => {
     try {
-        const { title, content } = req.body;
+      const { title, author, content, categories, tags } = req.body;
+  
+      const mainImage = req.files['mainImage'] ? {
+        data: req.files['mainImage'][0].buffer.toString('base64'),
+        contentType: req.files['mainImage'][0].mimetype,
+      } : null;
 
-        // Check for the main image
-        const mainImage = req.file ? {
-            data: req.file.buffer.toString('base64'),
-            contentType: req.file.mimetype,
-        } : null;
+      console.log('Main Image:', mainImage); // Log main image
+  
+      const additionalImages = req.files['additionalImages'] ? req.files['additionalImages'].map(file => ({
+        data: file.buffer.toString('base64'),
+        contentType: file.mimetype,
+      })) : [];
 
-        console.log(mainImage.data)
-
-        // Check for additional images
-        const additionalImages = req.files && req.files['additionalImages'] ? req.files['additionalImages'].map(file => ({
-            data: file.buffer.toString('base64'),
-            contentType: file.mimetype,
-        })) : [];
-
-        const newPost = new Post({
-            title,
-            content,
-            mainImage,
-            additionalImages,
-        });
-
-        await newPost.save();
-        res.status(201).send("Post created successfully");
+      console.log('Additional Images:', additionalImages); // Log additional images
+  
+      const newPost = new Post({
+        title,
+        author,
+        content,
+        categories: categories.split(',').map(category => category.trim()),
+        tags: tags.split(',').map(tag => tag.trim()),
+        mainImage,
+        additionalImages,
+      });
+  
+      await newPost.save();
+      res.status(201).send("Post created successfully");
     } catch (error) {
-        console.error(error);
-        res.status(500).send("Error creating post");
+      console.error('Error creating post:', error);
+      res.status(500).send("Error creating post");
     }
-};
+  };
 
 const getPostById = async (req, res) => {
     try {

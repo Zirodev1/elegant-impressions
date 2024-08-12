@@ -6,7 +6,11 @@ const { createPost, getPostById } = require('../controllers/postController');
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post('/create', upload.fields([{ name: 'mainImage', maxCount: 1}, { name: 'additionalImages', maxCount: 10 }]), createPost);
+router.post('/create', upload.fields([
+  { name: 'mainImage', maxCount: 1},
+  { name: 'additionalImages', maxCount: 10 }]),
+   createPost);
+
 router.get('/:id', getPostById);
 router.get('/', async (req, res) => {
     try {
