@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import AdminPanel from './pages/AdminPanel';
 import Post from './components/Post';
 import Blog from './pages/Blog';
+import Contact from './pages/Contact';
 
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route exact path='/' Component={Home} />
           <Route path='/blog' Component={Blog} />
+          <Route path='/contact' Component={Contact} />
           <Route path='/admin' Component={AdminPanel} />
           <Route path='/post/:id' Component={Post} />
         </Routes>

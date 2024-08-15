@@ -1,0 +1,22 @@
+.footer {
+  height: 300px;
+  background-color: black ;
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  height: 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link-sec {
+  height: 120px;
+}
+
+.link-sec li {
+  list-style: none;
+  text-align: left;
+  text-align: left;
+}
