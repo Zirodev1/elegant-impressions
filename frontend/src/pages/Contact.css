@@ -1,0 +1,41 @@
+.contact-container {
+  height: 600px;
+  align-items: center;
+}
+
+.contact-info {
+  width: 600px;
+  height: 400px;
+  text-align: left;
+}
+
+.contacts {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(133, 103, 79);
+}
+
+.contact-inputs {
+  width: 60px;
+  border: none;
+  border-bottom: 1px solid rgb(216, 213, 213);
+}
+
+.contact-form {
+
+}
+
+
+.contact-form-btn {
+  display: block;
+  background-color: #a2783a;
+  color: aliceblue;
+  border: #a2783a;
+  box-shadow: none;
+  padding: 10px 20px;
+  margin: 10px auto;
+}
+
+.line-hr-left {
+  width: 60px;
+}
